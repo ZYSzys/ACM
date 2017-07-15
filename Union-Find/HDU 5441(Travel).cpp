@@ -49,96 +49,92 @@ Sample Output
 
 --------------离线处理+Kruskal+Union-Find
 
+
 #include <cstdio>
-#include <cstring>
 #include <algorithm>
 using namespace std;
-const int maxn = 22222;
-const int maxm = 111111;
-const int maxq = 5555;
-int root[maxn];
-int num[maxn];
-int ans[maxq];
-int T, n , m, q;
+const int maxn = 20010;
+const int maxm = 100010;
+const int maxq = 5010;
+int root[maxn], num[maxn], ans[maxq];
+int T, n, m, q;
 struct Edge
 {
-	int u, v, w;
-	bool operator < (const Edge &b)const
-	{
-		return w < b.w;
-	}
+    int u, v, w;
+    bool operator < (const Edge &b)const       //重载 < ,用于排序
+    {
+        return w < b.w;
+    }
 }edge[maxm];
-struct Query
+struct  Query
 {
-	int v, id;
-	bool operator < (const Query &b)const       //重载 <
-	{
-		return v < b.v;
-	}
+    int v, id;
+    bool operator < (const Query &b)const
+    {
+        return v < b.v;
+    }
 }que[maxq];
 void Init(int n)
 {
-	for(int i = 1; i <= n; i++)
-	{
-		root[i] = i;
-		num[i] = 1;
-	}
+    for(int i = 1; i <= n; i++)
+    {
+        root[i] = i;
+        num[i] = 1;
+    }
 }
 int Find(int x)
 {
-	return root[x] == x ? root[x] : root[x] = Find(root[x]);
+    return root[x] == x ? root[x] : root[x] = Find(root[x]);
 }
 void Union(int x, int y)
 {
-	int t1 = Find(x);
-	int t2 = Find(y);
-	if(t1 != t2)
-	{
-		root[t1] = t2;
-		num[t2] += num[t1];
-		num[t1] = 0;
-	}
+    int t1 = Find(x);
+    int t2 = Find(y);
+    if(t1 != t2)
+    {
+        root[t1] = t2;
+        num[t2] += num[t1];
+        num[t1] = 0;
+    }
 }
 int main()
 {
-	scanf("%d", &T);
-	while(T--)
-	{
-		scanf("%d%d%d", &n, &m, &q);
-		Init(n);
-		for(int i = 1; i <= m; i++)
-		{
-			scanf("%d%d%d", &edge[i].u, &edge[i].v, &edge[i].w);
-		}
-		sort(edge+1, edge+m+1);
-		for(int i = 1; i<= q; i++)
-		{
-			scanf("%d", &que[i].v);
-			que[i].id = i;
-		}
-		sort(que+1, que+q+1);
-		int temp = 0;
-		for(int i = 1, j = 1; i <= q; i++)
-		{
-			while(j <= m && edge[j].w <= que[i].v)
-			{
-				int u = edge[j].u;
-				int v = edge[j].v;
-				u = Find(u);
-				v = Find(v);
-				if(u != v)
-				{
-					temp += 2*num[u]*num[v];
-					Union(u, v);
-				}
-				j++;
-			}
-			ans[que[i].id] = temp;
-		}
-		for(int i = 1; i <= q; i++)
-		{
-			printf("%d\n", ans[i]);
-		}
-	}
-	return 0;
+    scanf("%d", &T);
+    while(T--)
+    {
+        scanf("%d%d%d", &n, &m, &q);
+        Init(n);
+        for(int i = 1; i <= m; i++)
+        {
+            scanf("%d%d%d", &edge[i].u, &edge[i].v, &edge[i].w);
+        }
+        sort(edge+1, edge+m+1);
+        for(int i = 1; i <= q; i++)
+        {
+            scanf("%d", &que[i].v);
+            que[i].id = i;
+        }
+        sort(que+1, que+q+1);
+        int res = 0;
+        for(int i = 1, j = 1; i <= q; i++)
+        {
+            while(j <= m && edge[j].w <= que[i].v)
+            {
+                int u = Find(edge[j].u);
+                int v = Find(edge[j].v);
+                if(u != v)
+                {
+                    res += 2*num[u]*num[v];
+                    Union(u, v);
+                }
+                j++;
+            }
+            ans[que[i].id] = res;
+        }
+        for(int i = 1; i <= q; i++)
+        {
+            printf("%d\n", ans[i]);
+        }
+    }
+    return 0;
 }
