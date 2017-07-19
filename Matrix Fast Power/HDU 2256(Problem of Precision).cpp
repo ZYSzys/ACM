@@ -1,39 +1,4 @@
-/*
-Queuing
-
-Time Limit: 10000/5000 MS (Java/Others)    Memory Limit: 32768/32768 K (Java/Others)
-Total Submission(s): 5823    Accepted Submission(s): 2534
-
-
-Problem Description
-Queues and Priority Queues are data structures which are known to most computer scientists. The Queue occurs often in our daily life. There are many people lined up at the lunch time. 
-
-
-  Now we define that ‘f’ is short for female and ‘m’ is short for male. If the queue’s length is L, then there are 2L numbers of queues. For example, if L = 2, then they are ff, mm, fm, mf . If there exists a subqueue as fmf or fff, we call it O-queue else it is a E-queue.
-Your task is to calculate the number of E-queues mod M with length L by writing a program.
- 
-
-Input
-Input a length L (0 <= L <= 10 6) and M.
- 
-
-Output
-Output K mod M(1 <= M <= 30) where K is the number of E-queues with length L.
- 
-
-Sample Input
-3 8
-4 7
-4 8
- 
-
-Sample Output
-6
-2
-1
-*/
-
-
+//http://acm.hdu.edu.cn/showproblem.php?pid=2256
 
 #include <cstdio>
 #include <cstring>
