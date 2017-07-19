@@ -31,8 +31,8 @@ void Init(Matrix &mat)
 	memset(mat.m, 0, sizeof(mat.m));
 	mat.m[0][0] = 5;
 	mat.m[0][1] = 12; 
-    mat.m[1][0] = 2;
-    mat.m[1][1] = 5;  
+        mat.m[1][0] = 2;
+        mat.m[1][1] = 5;  
 }
 int Pow(Matrix &mat, int k)
 {
@@ -57,7 +57,7 @@ int Pow(Matrix &mat, int k)
 		mat = mat * mat;
 	}
 	int res = (int)(ans.m[0][0]*5+ans.m[0][1]*2) % mod;  
-    return (2*res-1)%mod;  
+        return (2*res-1)%mod;  
 }
 int main()
 {
