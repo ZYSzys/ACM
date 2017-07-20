@@ -134,9 +134,9 @@ int main()
 {
 	lint k;
 	lint L1 = 1e9+7;   
-    lint L2 = 222222224;
-    lint L3 = 183120;  
-    Matrix mat;
+    	lint L2 = 222222224;
+    	lint L3 = 183120;  
+    	Matrix mat;
 	Init(mat);
 	while(~scanf("%lld", &k))
 	{
