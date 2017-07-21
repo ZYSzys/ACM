@@ -38,6 +38,7 @@ int n, k, MOD;
 struct Matrix
 {
 	int mat[N][N];
+	//重载 * 运算符
 	Matrix operator * (const Matrix &m)const
 	{
 		Matrix tmp;
@@ -55,6 +56,7 @@ struct Matrix
 		}
 		return tmp;
 	}
+	//重载 + 运算符，使
 	Matrix operator + (const Matrix &m)const
 	{
 		Matrix tmp;
@@ -69,6 +71,7 @@ struct Matrix
 		return tmp;
 	}
 };
+//快速幂
 Matrix Pow(Matrix m, int t)
 {
 	Matrix ans;
@@ -88,6 +91,9 @@ Matrix Pow(Matrix m, int t)
  	}
  	return ans;
 }
+//用二分法求解：求(A+A^2+....A^K)%m后的矩阵
+//1. 如果k为偶数，那么(A+A^2+....A^K) = (A+...+A^K/2)+A^K/2*(A+...+A^K/2)
+//2. 如果k为奇数，那么(A+A^2+....A^K) = (A+...+A^K/2)+A^K/2*(A+...+A^K/2)+A^k
 Matrix solve(Matrix m, int t)
 {
 	Matrix A;
