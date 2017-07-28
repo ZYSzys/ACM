@@ -96,3 +96,59 @@ int main()
     }
     return 0;
 }
+
+
+/*
+#include <iostream>
+#include <string.h>
+#include <stdio.h>
+#include <algorithm>
+using namespace std;
+#define LL long long
+const int p = 1e9+7;
+const int N = 250000+10;
+int a[N];
+int b[N];
+int Max[N];
+int main()
+{
+    int n;
+    while(~scanf("%d",&n))
+    {
+        LL ans=0;
+        for(int i=1;i<=n;i++)
+        {
+            scanf("%d",&a[i]);
+            a[i]-=i;
+        }
+        for(int i=1;i<=n;i++)
+        {
+            scanf("%d",&b[i]);
+        }
+        sort(b+1,b+1+n);
+        memset(Max,0,sizeof Max);
+        Max[n]=a[n];
+        for(int i=n-1;i>=1;i--)
+        {
+            if(a[i]>Max[i+1])
+            {
+                Max[i]=a[i];
+            }
+            else
+                Max[i]=Max[i+1];
+        }
+        int an1;
+        int mx=Max[b[1]];
+        an1=mx-(n+1);
+        (ans+=(LL)mx)%=p;
+        for(int i=2;i<=n;i++)
+        {
+            mx=Max[b[i]];
+            mx=max(mx,an1);
+            (ans+=(LL)mx)%=p;
+        }
+        printf("%lld\n",ans);
+    }
+    return 0;
+}
+*/
