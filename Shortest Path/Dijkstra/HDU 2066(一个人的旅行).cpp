@@ -1,4 +1,5 @@
-
+//http://acm.hdu.edu.cn/showproblem.php?pid=2066
+/*
 一个人的旅行
 
 Time Limit: 1000/1000 MS (Java/Others)    Memory Limit: 32768/32768 K (Java/Others)
@@ -35,6 +36,7 @@ Sample Input
 Sample Output
 9
 
+*/
 
 
 
