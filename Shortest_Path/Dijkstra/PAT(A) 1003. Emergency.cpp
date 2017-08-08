@@ -1,3 +1,4 @@
+/*
 1003. Emergency (25)
 
 时间限制
@@ -32,7 +33,7 @@ Sample Input
 3 4 1
 Sample Output
 2 4
-
+*/
 
 
 
